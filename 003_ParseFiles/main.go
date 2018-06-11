@@ -18,7 +18,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	tpl, err = template.ParseFiles("two.gohtml", "vespa.gohtml")
+	tpl, err = tpl.ParseFiles("two.gohtml", "vespa.gohtml")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -42,5 +42,4 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
 }

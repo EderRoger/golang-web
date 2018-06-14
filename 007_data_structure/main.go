@@ -8,22 +8,32 @@ import (
 
 var tpl *template.Template
 
+type sage struct {
+	Name  string
+	Motto string
+}
+
 func init() {
-	tpl = template.Must(template.ParseFiles("tpl.1.gohtml"))
+	tpl = template.Must(template.ParseFiles("tplStruct.gohtml"))
 }
 
 func main() {
 	//sages := []string{"Gandhi", "MLK", "Buddha", "Jesus", "Muhammad"}
 
-	sagesMap := map[string]string{
-		"India":   "Gandhi",
-		"America": "MLK",
-		"Mediate": "Buddha",
-		"Love":    "Jesus",
-		"Prophet": "Muhammad",
+	jesus := sage{
+		Name:  "Jesus",
+		Motto: "Love",
 	}
 
-	err := tpl.Execute(os.Stdout, sagesMap)
+	// sagesMap := map[string]string{
+	// 	"India":   "Gandhi",
+	// 	"America": "MLK",
+	// 	"Mediate": "Buddha",
+	// 	"Love":    "Jesus",
+	// 	"Prophet": "Muhammad",
+	// }
+
+	err := tpl.Execute(os.Stdout, jesus)
 	if err != nil {
 		log.Fatalln(err)
 	}

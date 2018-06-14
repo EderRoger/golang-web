@@ -13,8 +13,18 @@ type sage struct {
 	Motto string
 }
 
+type car struct {
+	Model string
+	Door  int
+}
+
+type items struct {
+	Wisdom    []sage
+	Transport []car
+}
+
 func init() {
-	tpl = template.Must(template.ParseFiles("tplStruct.gohtml"))
+	tpl = template.Must(template.ParseFiles("tplStructSlice.gohtml"))
 }
 
 func main() {
@@ -25,6 +35,28 @@ func main() {
 		Motto: "Love",
 	}
 
+	buddha := sage{
+		Name:  "Buddha",
+		Motto: "Peace",
+	}
+
+	corolla := car{
+		Model: "Corolla",
+		Door:  4,
+	}
+
+	civic := car{
+		Model: "Civic",
+		Door:  5,
+	}
+
+	sages := []sage{jesus, buddha}
+	cars := []car{corolla, civic}
+
+	data := items{
+		Wisdom:    sages,
+		Transport: cars,
+	}
 	// sagesMap := map[string]string{
 	// 	"India":   "Gandhi",
 	// 	"America": "MLK",
@@ -33,7 +65,7 @@ func main() {
 	// 	"Prophet": "Muhammad",
 	// }
 
-	err := tpl.Execute(os.Stdout, jesus)
+	err := tpl.Execute(os.Stdout, data)
 	if err != nil {
 		log.Fatalln(err)
 	}

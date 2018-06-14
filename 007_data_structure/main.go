@@ -57,6 +57,14 @@ func main() {
 		Wisdom:    sages,
 		Transport: cars,
 	}
+
+	dataRefact := struct {
+		Wisdom    []sage
+		Transport []car
+	}{
+		sages,
+		cars,
+	}
 	// sagesMap := map[string]string{
 	// 	"India":   "Gandhi",
 	// 	"America": "MLK",
@@ -66,6 +74,12 @@ func main() {
 	// }
 
 	err := tpl.Execute(os.Stdout, data)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	err = tpl.Execute(os.Stdout, dataRefact)
 	if err != nil {
 		log.Fatalln(err)
 	}

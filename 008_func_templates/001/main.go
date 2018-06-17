@@ -59,6 +59,12 @@ func main() {
 		Doors:        2,
 	}
 
+	muscle := car{
+		Manufacturer: "Ford",
+		Model:        "Mustang",
+		Doors:        2,
+	}
+
 	c := car{
 		Manufacturer: "Toyota",
 		Model:        "Corolla",
@@ -66,7 +72,7 @@ func main() {
 	}
 
 	sages := []sage{b, g, m}
-	cars := []car{f, c}
+	cars := []car{f, c, muscle}
 
 	data := struct {
 		Wisdom    []sage
